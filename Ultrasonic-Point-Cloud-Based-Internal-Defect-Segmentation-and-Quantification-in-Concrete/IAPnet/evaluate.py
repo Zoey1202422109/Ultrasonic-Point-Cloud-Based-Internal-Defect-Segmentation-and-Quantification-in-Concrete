@@ -194,7 +194,7 @@ def main():
     checkpoint = torch.load(args.model, map_location=device, weights_only=False)
     config = checkpoint.get("config", {})
     num_points = config.get("num_points", 16384)
-    in_channels = config.get("in_channels", 4)
+    in_channels = config.get("in_channels", 5)
 
     model = PointNetSegmentation(in_channels=in_channels, num_classes=2)
     model.load_state_dict(checkpoint["model_state_dict"])
