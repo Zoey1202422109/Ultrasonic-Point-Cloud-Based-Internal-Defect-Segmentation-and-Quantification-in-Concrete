@@ -6,7 +6,7 @@ import torch.nn.functional as F
 class PointNetSegmentation(nn.Module):
     """Point-wise segmentation with encoder, global context, and skip decoder."""
 
-    def __init__(self, in_channels=4, num_classes=2):
+    def __init__(self, in_channels=5, num_classes=2):
         super().__init__()
 
         self.enc1 = nn.Sequential(
@@ -111,8 +111,8 @@ class FocalLoss(nn.Module):
 
 
 if __name__ == "__main__":
-    model = PointNetSegmentation(in_channels=4, num_classes=2)
-    x = torch.randn(2, 8192, 4)
+    model = PointNetSegmentation(in_channels=5, num_classes=2)
+    x = torch.randn(2, 8192, 5)
     out = model(x)
     print(f"in:  {x.shape}")
     print(f"out: {out.shape}")
